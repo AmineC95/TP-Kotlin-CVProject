@@ -6,35 +6,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.tpappcv.databinding.FragmentSlideshowBinding
+import com.example.tpappcv.databinding.FragmentEntrepriseBinding
 
 class EntrepriseFragment : Fragment() {
 
-private var _binding: FragmentSlideshowBinding? = null
-  // This property is only valid between onCreateView and
-  // onDestroyView.
-  private val binding get() = _binding!!
+    private var _binding: FragmentEntrepriseBinding? = null
+    private val binding get() = _binding!!
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    val entrepriseViewModel =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val entrepriseViewModel =
             ViewModelProvider(this).get(EntrepriseViewModel::class.java)
 
-    _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
-    val root: View = binding.root
+        _binding = FragmentEntrepriseBinding.inflate(inflater, container, false)
+        val root: View = binding.root
 
-    val textView: TextView = binding.textEntreprise
-    entrepriseViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
+        entrepriseViewModel.data.observe(viewLifecycleOwner, Observer {
+            binding.textEntreprise.text = "${it.company} - ${it.job}"
+        })
+        return root
     }
-    return root
-  }
 
-override fun onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

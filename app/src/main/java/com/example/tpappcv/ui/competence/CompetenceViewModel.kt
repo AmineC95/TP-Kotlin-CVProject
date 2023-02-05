@@ -8,7 +8,7 @@ import com.example.tpappcv.MyData
 class CompetenceViewModel : ViewModel() {
 
     private val _data = MutableLiveData<MyData>().apply {
-        value = MyData("CHIOUKH Amine", "amine.chioukh95@gmail.com")
+        value = MyData("C# , Vue.js , Kotlin ...", "Communication, Perfectionnist ...")
     }
     val data: LiveData<MyData> = _data
 }
