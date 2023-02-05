@@ -20,7 +20,7 @@ class CompetenceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCompetenceBinding.inflate(inflater, container, false)
-        binding.user = MyData("CHIOUKH Amine", "amine.chioukh95@gmail.com")
+        binding.user = MyData("C# , Vue.js , Kotlin ...", "Communication-Perfectionnist ...")
         return binding.root
     }
 
